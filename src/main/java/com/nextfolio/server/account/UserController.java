@@ -30,7 +30,7 @@ public class UserController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public void login(@RequestBody User user) {
-        
+
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.POST)
