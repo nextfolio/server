@@ -1,4 +1,4 @@
-package com.nextfolio.server;
+package com.nextfolio.server.portfolio;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -31,12 +31,12 @@ public class PortfolioController {
     }
 
 
-    /* Portfolio Requests */
+    /* portfolio Requests */
     @RequestMapping(value="/{id}", method = RequestMethod.POST)
     public Portfolio addStock(@PathVariable("id") long id,
-                                   @RequestParam String ticker,
-                                   @RequestParam int numShares,
-                                   @RequestParam float price){
+                              @RequestParam String ticker,
+                              @RequestParam int numShares,
+                              @RequestParam float price){
         // sql database stuff
         Stock stock = new Stock(ticker, price);
         Portfolio portfolio = new Portfolio(id); // get a portfolio from sql

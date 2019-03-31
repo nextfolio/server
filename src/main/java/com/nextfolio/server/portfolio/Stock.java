@@ -1,4 +1,4 @@
-package com.nextfolio.server;
+package com.nextfolio.server.portfolio;
 
 public class Stock {
     private String ticker;

@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.POST)
-    public boolean logout(@RequestBody User user) {
+    public boolean logout() {
         return true;
     }
 }
