@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
+import java.util.Optional;
 
 @RestController("user")
 public class UserController {
@@ -19,8 +19,8 @@ public class UserController {
     public User register(@RequestBody User user) {
         System.out.println("Hello");
         // Create user in database
-        List<User> users = repository.findByUsername(user.getUsername());
-        if (users.isEmpty()) {
+        Optional<User> userOp = repository.findByUsername(user.getUsername());
+        if (!userOp.isPresent()) {
             user = repository.save(user);
             return user;
         }
@@ -29,12 +29,22 @@ public class UserController {
     }
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
-    public void login(@RequestBody User user) {
-
+    public Long login(@RequestBody LoginForm form) {
+        Optional<User> userOp = repository.findByUsername(form.getUsername());
+        if (userOp.isPresent()) {
+            User user = userOp.get();
+            if (form.getPassword().equals(user.getPassword())) {
+                return user.getId();
+            } else {
+                throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Incorrect password");
+            }
+        } else {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unknown username");
+        }
     }
 
     @RequestMapping(value = "logout", method = RequestMethod.POST)
-    public void logout(@RequestBody User user) {
-
+    public boolean logout(@RequestBody User user) {
+        return true;
     }
 }
