@@ -7,6 +7,8 @@ import java.util.Optional;
 public class Portfolio {
     private HashMap<Stock, Integer> stocks = new HashMap();
 
+    public Portfolio(){}
+
     public Portfolio(int size){
         stocks = new HashMap<>(size);
     }
