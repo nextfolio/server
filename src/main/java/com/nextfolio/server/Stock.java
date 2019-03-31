@@ -12,8 +12,21 @@ public class Stock {
     private int yearLow;
 
 
-    public Stock(){
+    public Stock(){}
+    public Stock(String ticker, float price){
+        this.ticker = ticker;
+        this.price = price;
+    }
 
+    @Override
+    public boolean equals(Object obj){
+        if (obj instanceof Stock) {
+            Stock stock = (Stock) obj;
+            return this.getTicker().equals(stock.getTicker())
+                && this.getPrice() == stock.getPrice();
+        }
+
+        return false;
     }
 
     public String getTicker() {

@@ -6,15 +6,33 @@ import java.util.Optional;
 
 public class Portfolio {
     private HashMap<Stock, Integer> stocks = new HashMap();
+    private long id;
 
     public Portfolio(){}
+
+    public Portfolio(long id){
+        this.id = id;
+    }
 
     public Portfolio(int size){
         stocks = new HashMap<>(size);
     }
 
+    public long getId(){
+        return this.id;
+    }
+
     public HashMap<Stock, Integer> getPortfolio(){
         return stocks;
+    }
+
+    public Optional<Stock> getStock(String ticker){
+        for (Stock stock: stocks.keySet()){
+            if (stock.getTicker().equals(ticker)){
+                return Optional.of(stock);
+            }
+        }
+        return Optional.empty();
     }
 
     public Optional<Integer> getShares(Stock stock){
