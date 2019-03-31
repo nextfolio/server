@@ -1,6 +1,5 @@
-package com.nextfolio.server;
+package com.nextfolio.server.portfolio;
 
-import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Optional;
 
