@@ -1,11 +1,17 @@
 package com.nextfolio.server.portfolio;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.HashMap;
 import java.util.Optional;
 
 public class Portfolio {
     private HashMap<Stock, Integer> stocks = new HashMap();
-    private long id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     public Portfolio(){}
 

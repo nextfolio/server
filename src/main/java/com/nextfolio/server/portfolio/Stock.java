@@ -1,6 +1,8 @@
 package com.nextfolio.server.portfolio;
 
 public class Stock {
+
+
     private String ticker;
     private double price;
 
