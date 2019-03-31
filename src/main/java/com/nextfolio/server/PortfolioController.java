@@ -13,10 +13,15 @@ public class PortfolioController {
     }
 
 
-    @RequestMapping(value="stock", method=RequestMethod.GET)
+    @RequestMapping(value="stock/volume", method=RequestMethod.GET)
     public int getVolume(@RequestParam int periodInDays){
-        // sql database request
         return 0;
+    }
+
+    @RequestMapping(value="stock", method=RequestMethod.DELETE)
+    public Stock removeStock(@RequestParam String ticker, int numShares){
+        // sql database request
+        return null;
     }
 
     @RequestMapping(value="stock", method=RequestMethod.GET)
